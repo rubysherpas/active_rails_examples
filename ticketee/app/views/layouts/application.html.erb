@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ticketee</title>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield(:title) %>
+      <% else %>
+        Ticketee
+      <% end %>
+    </title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
