@@ -1,25 +1,15 @@
-<%= form_with(model: project, local: true) do |form| %>
-  <% if project.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(project.errors.count, "error") %>
-    prohibited this project from being saved:</h2>
+<%= form_with(model: project, local: true, class: "form lg:w-1/2") do |form| %>
 
-    <ul>
-      <% project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <p>
-    <%= form.label :name %><br>
+  <div class='mb-4'>
+    <%= form.label :name %>
     <%= form.text_field :name %>
-  </p>
+    <%= error_messages_for(form.object, :name) %>
+  </div>
 
-  <p>
-    <%= form.label :description %><br>
+  <div class='mb-4'>
+    <%= form.label :description %>
     <%= form.text_field :description %>
-  </p>
+  </div>
 
-  <%= form.submit %>
+  <%= form.submit nil, class: "btn btn-blue" %>
 <% end %>

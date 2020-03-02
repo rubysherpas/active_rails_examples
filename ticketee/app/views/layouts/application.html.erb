@@ -18,9 +18,12 @@
   </head>
 
   <body>
-    <% flash.each do |key, message| %>
-      <div class='flash flash-alert'><%= message %></div>
-    <% end %>
-    <%= yield %>
+    <div class="container my-4 mx-auto px-4">
+      <% flash.each do |key, message| %>
+        <div class='flash flash-alert'><%= message %></div>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -6,7 +6,7 @@ h1 {
 }
 
 h2 {
-  @apply text-xl;
+  @apply text-2xl;
 }
 
 h3 {
@@ -29,15 +29,37 @@ h3 {
   input[type=text]:focus {
     @apply outline-none shadow-outline
   }
+
+  .field_with_errors {
+    input[type=text] {
+      @apply border-red-500
+    }
+  }
 }
 
 @tailwind components;
 @tailwind utilities;
 
+.btn {
+  @apply text-white font-bold py-2 px-4 rounded inline-block
+}
+
 .btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded
+  @apply bg-blue-500
 }
 
 .btn-blue:hover {
   @apply bg-blue-700
+}
+
+.btn-red {
+  @apply bg-red-500
+}
+
+.btn-red:hover {
+  @apply bg-red-700
+}
+
+.page-header {
+  @apply flex items-center justify-between flex-wrap px-2
 }
