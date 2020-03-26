@@ -28,8 +28,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <%= "active" if current_page?("/") %>">
-          <%= link_to "Home", root_path %>
-        </li>
+        <%= link_to "Home", root_path %>
+      </li>
+      <li class="<%= "active" if current_page?("/users/sign_up") %>">
+        <%= link_to "Sign up", new_user_registration_path %>
+      </li>
     </ul>
   </div>
 </nav>
