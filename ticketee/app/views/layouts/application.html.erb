@@ -28,16 +28,26 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item <%= "active" if current_page?("/") %>">
-            <%= link_to "Home", root_path %>
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-          <li class="<%= "active" if current_page?("/users/sign_up") %>">
-            <%= link_to "Sign up", new_user_registration_path %>
-          </li>
-          <li class="<%= "active" if current_page?("/users/sign_in") %>">
-            <%= link_to "Sign in", new_user_session_path %>
-          </li>
+          <% unless user_signed_in? %>
+            <li class="<%= "active" if current_page?("/users/sign_up") %>">
+              <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="<%= "active" if current_page?("/users/sign_in") %>">
+              <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
       </div>
+      <% if user_signed_in? %>
+        <div class="navbar-right">
+          <p class="navbar-text">
+            Signed in as <%= current_user.email %>
+          </p>
+          &middot; <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        </div>
+      <% end %>
     </nav>
 
     <div class="container-fluid">
