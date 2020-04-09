@@ -1,5 +1,5 @@
 
-<div>
+<div class="ticket">
   <header>
     <h1><%= @project.name %></h1>
   </header>
@@ -15,16 +15,14 @@
     </ul>
   </header>
 
-  <table>
-    <tr>
-      <th>Author:</th>
-      <td><%= @ticket.author.email %></td>
-    </tr>
-    <tr>
-      <th>Created:</th>
-      <td><%= time_ago_in_words(@ticket.created_at) %> ago</td>
-    </tr>
-  </table>
+  <dl class="attributes">
+    <dt>Author:</dt>
+    <dd><%= @ticket.author.email %></dd>
+    <dt>Created:</dt>
+    <dd><%= time_ago_in_words(@ticket.created_at) %> ago</dd>
+    <dt>State:</dt>
+    <dd>Awesome</dd>
+  </dl>
 
   <hr>
 

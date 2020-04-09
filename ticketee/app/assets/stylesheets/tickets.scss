@@ -1,3 +1,15 @@
 // Place all the styles related to the tickets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.ticket {
+  .attributes {
+    dt {
+      @extend .mr-2;
+    }
+
+    @extend .col-md-4, .col-sm-12;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+}
