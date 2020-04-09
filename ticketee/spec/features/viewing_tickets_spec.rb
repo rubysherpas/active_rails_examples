@@ -22,7 +22,7 @@ RSpec.feature "Users can view tickets" do
     expect(page).to_not have_content "Standards compliance"
 
     click_link "Make it shiny!"
-    within("#ticket h2") do
+    within(".ticket h2") do
       expect(page).to have_content "Make it shiny!"
     end
 

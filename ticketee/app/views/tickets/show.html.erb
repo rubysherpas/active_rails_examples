@@ -18,10 +18,14 @@
   <dl class="attributes">
     <dt>Author:</dt>
     <dd><%= @ticket.author.email %></dd>
+
     <dt>Created:</dt>
     <dd><%= time_ago_in_words(@ticket.created_at) %> ago</dd>
-    <dt>State:</dt>
-    <dd>Awesome</dd>
+
+    <% if @ticket.state.present? %>
+      <dt>State:</dt>
+      <dd><%= render @ticket.state %></dd>
+    <% end %>
   </dl>
 
   <hr>
