@@ -4,4 +4,6 @@ class Ticket < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true, length: { minimum: 10 }
+
+  has_many :comments, dependent: :destroy
 end

@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "rails_bootstrap_forms";
+@import "comments";
 
 .alert-notice {
   @extend .alert-success;

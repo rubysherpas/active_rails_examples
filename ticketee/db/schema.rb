@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_112647) do
+ActiveRecord::Schema.define(version: 2020_04_09_043328) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.integer "ticket_id", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["ticket_id"], name: "index_comments_on_ticket_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -43,6 +53,8 @@ ActiveRecord::Schema.define(version: 2020_03_30_112647) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "tickets"
+  add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "tickets", "projects"
   add_foreign_key "tickets", "users", column: "author_id"
 end

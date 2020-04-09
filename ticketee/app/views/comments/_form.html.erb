@@ -1,0 +1,8 @@
+<header>
+  <h3>New Comment</h3>
+</header>
+
+<%= bootstrap_form_with model: [ticket, comment], local: true do |f| %>
+  <%= f.text_area :text %>
+  <%= f.primary %>
+<% end %>
