@@ -4,6 +4,17 @@
 
 @import "bootstrap";
 
+.state {
+  display: inline-block;
+  font-size: 110%;
+  color: white;
+  @extend .rounded, .px-2, .py-1;
+}
+
+.tickets li {
+  @extend .mb-1;
+}
+
 .ticket {
   .attributes {
     dt {
