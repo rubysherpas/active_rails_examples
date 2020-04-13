@@ -17,7 +17,7 @@ RSpec.feature "Users can create new tickets" do
     click_button "Create Ticket"
 
     expect(page).to have_content "Ticket has been created."
-    within("#ticket") do
+    within(".ticket") do
       expect(page).to have_content "Author: #{user.email}"
     end
   end
