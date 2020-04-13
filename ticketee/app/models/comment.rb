@@ -8,6 +8,7 @@ class Comment < ActiveRecord::Base
   validates :text, presence: true
 
   scope :persisted, -> { where.not(id: nil) }
+  scope :ordered, -> { order(created_at: :asc) }
 
   private
 
