@@ -30,6 +30,11 @@
           <li class="nav-item <%= "active" if current_page?("/") %>">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
+          <% admins_only do %>
+            <li>
+              <%= link_to "Admin", admin_root_path, class: "nav-link" %>
+            </li>
+          <% end %>
           <% unless user_signed_in? %>
             <li class="<%= "active" if current_page?("/users/sign_up") %>">
               <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
