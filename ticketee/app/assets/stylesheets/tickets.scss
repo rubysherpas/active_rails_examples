@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 @import "bootstrap";
+@import "font-awesome";
 
 .state {
   display: inline-block;
@@ -24,5 +25,21 @@
     @extend .col-md-4, .col-sm-12;
     display: grid;
     grid-template-columns: 1fr 3fr;
+  }
+}
+
+.tag {
+  @extend .state, .mr-1;
+  background: $blue;
+
+  a {
+    color: white;
+
+    &.remove {
+      font-family: "FontAwesome";
+      @extend .fa-close;
+      margin-right: 0.5em;
+      text-decoration: none;
+    }
   }
 }
