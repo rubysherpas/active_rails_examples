@@ -9,9 +9,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = @project.tickets.build(ticket_params)
     @ticket.author = current_user
-    @ticket.tags = params[:tag_names].split(",").map do |tag|
-      Tag.find_or_initialize_by(name: tag)
-    end
+    @ticket.tags = processed_tags
 
     if @ticket.save
       flash[:notice] = "Ticket has been created."
@@ -32,6 +30,7 @@ class TicketsController < ApplicationController
 
   def update
     if @ticket.update(ticket_params)
+      @ticket.tags << processed_tags
       flash[:notice] = "Ticket has been updated."
       redirect_to [@project, @ticket]
     else
@@ -59,6 +58,12 @@ class TicketsController < ApplicationController
 
   def set_ticket
     @ticket = @project.tickets.find(params[:id])
+  end
+
+  def processed_tags
+    params[:tag_names].split(",").map do |tag|
+      Tag.find_or_initialize_by(name: tag)
+    end
   end
 
 end

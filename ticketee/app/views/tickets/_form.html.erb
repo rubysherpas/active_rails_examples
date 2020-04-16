@@ -2,8 +2,9 @@
   <%= form.text_field :name %>
   <%= form.text_area :description %>
 
-  <div class='form-group'>
-    <%= label_tag :tag_names, "Tags" %>
+  <div class='form-group tags'>
+    <div><%= label_tag :tag_names, "Tags" %></div>
+    <%= render @ticket.tags %>
     <%= text_field_tag :tag_names, "", class: "form-control" %>
   </div>
 

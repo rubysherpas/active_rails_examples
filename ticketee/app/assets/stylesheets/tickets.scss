@@ -29,16 +29,14 @@
 }
 
 .tag {
-  @extend .state, .mr-1;
-  background: $blue;
+  @extend .state, .mr-1, .mb-1, .border;
+  color: black;
 
   a {
-    color: white;
-
+    color: black;
     &.remove {
       font-family: "FontAwesome";
       @extend .fa-close;
-      margin-right: 0.5em;
       text-decoration: none;
     }
   }
