@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root "projects#index"
 
   resources :projects do
-    resources :tickets
+    resources :tickets do
+      collection do
+        get :search
+      end
+    end
   end
 
   scope path: "tickets/:ticket_id", as: :ticket do
