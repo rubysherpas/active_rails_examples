@@ -29,7 +29,7 @@
 
     <% if @ticket.tags.any? %>
       <dt>Tags:</dt>
-      <dd class="tags"><%= render @ticket.tags %></dd>
+      <dd class="tags"><%= render @ticket.tags, ticket: @ticket %></dd>
     <% end %>
   </dl>
 
