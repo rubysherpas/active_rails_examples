@@ -12,6 +12,7 @@ class TicketsController < ApplicationController
     @ticket.tags = processed_tags
 
     if @ticket.save
+      @ticket.watchers << current_user
       flash[:notice] = "Ticket has been created."
       redirect_to [@project, @ticket]
     else
