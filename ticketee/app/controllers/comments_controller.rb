@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
     @comment.author = current_user
 
     if @comment.save
+      comment_notifier = CommentNotifier.new(@comment)
+      comment_notifier.notify_watchers
       flash[:notice] = "Comment has been created."
       redirect_to [@ticket.project, @ticket]
     else

@@ -54,6 +54,8 @@ group :test do
   gem 'launchy'
 
   gem "factory_bot_rails", "~> 5.1"
+
+  gem "email_spec", "~> 2.2.0"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
