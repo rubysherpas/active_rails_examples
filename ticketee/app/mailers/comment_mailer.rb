@@ -1,5 +1,5 @@
 class CommentMailer < ApplicationMailer
-  def created
+  def new_comment
     @comment = params[:comment]
     @user = params[:user]
     @ticket = @comment.ticket
