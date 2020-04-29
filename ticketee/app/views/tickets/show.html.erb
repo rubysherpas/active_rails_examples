@@ -31,6 +31,13 @@
       <dt>Tags:</dt>
       <dd class="tags"><%= render @ticket.tags, ticket: @ticket %></dd>
     <% end %>
+
+    <dt>Watchers:</dt>
+    <dd class="watchers">
+      <%= toggle_watching_button(@ticket) %><br />
+      <%= @ticket.watchers.map(&:email).to_sentence %>
+    </dd>
+  </tr>
   </dl>
 
   <hr>
