@@ -2,6 +2,14 @@
   <%= form.text_field :name %>
   <%= form.text_area :description %>
   <%= form.file_field :attachment, label: "File" %>
+  <%#= form.file_field :attachments, label: "File", direct_upload: true, multiple: true %>
+  <br /><br />
+  <% if form.object.attachments.attached? %>
+    <% ids = form.object.attachments.map(&:signed_id) %>
+    <% ids.each do |id| %>
+      <%= form.hidden_field('ticket[attachments][]', value: id) %>
+    <% end %>
+  <% end %>  
 
   <%= form.primary %>
 <% end %>
