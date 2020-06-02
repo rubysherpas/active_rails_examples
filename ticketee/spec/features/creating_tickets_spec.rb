@@ -51,4 +51,23 @@ RSpec.feature "Users can create new tickets" do
       expect(page).to have_content "visual"
     end
   end
+
+  scenario "with an attached file", js: true do
+    fill_in "Name", with: "Non-standards compliance"
+    fill_in "Description", with: "My pages are ugly!"
+    fill_in "Tags", with: "browser visual"
+
+
+    file = Rails.root.join("spec/fixtures/speed.txt")
+    dropzone = find(".dz-hidden-input", visible: false)
+    dropzone.attach_file(file)
+
+    click_button "Create Ticket"
+
+    expect(page).to have_content "Ticket has been created."
+    within(".ticket .attributes .tags") do
+      expect(page).to have_content "browser"
+      expect(page).to have_content "visual"
+    end
+  end
 end

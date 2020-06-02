@@ -4,6 +4,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = @project.tickets.build
+    @attachments = []
   end
 
   def create
@@ -11,11 +12,17 @@ class TicketsController < ApplicationController
     @ticket.author = current_user
     @ticket.tags = processed_tags
 
+    @ticket.images.attach(params[:attachments])
+
     if @ticket.save
       @ticket.watchers << current_user
       flash[:notice] = "Ticket has been created."
       redirect_to [@project, @ticket]
     else
+      @attachments = params[:attachments].map do |attachment|
+        blob = ActiveStorage::Blob.find_signed(attachment)
+        { signedId: blob.signed_id, name: blob.filename, size: blob.byte_size, path: rails_blob_path(blob) }
+      end
       flash.now[:alert] = "Ticket has not been created."
       render "new"
     end
@@ -66,6 +73,11 @@ class TicketsController < ApplicationController
     end
 
     redirect_to project_ticket_path(@ticket.project, @ticket)
+  end
+
+  def upload_file
+    blob = ActiveStorage::Blob.create_and_upload!(io: params[:file], filename: params[:file].original_filename)
+    render json: { signedId: blob.signed_id }
   end
 
   private

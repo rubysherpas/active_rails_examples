@@ -9,6 +9,8 @@ class Ticket < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags, uniq: true
 
+  has_many_attached :images
+
   has_and_belongs_to_many :watchers, -> { distinct }, join_table: "ticket_watchers",
     class_name: "User"
 

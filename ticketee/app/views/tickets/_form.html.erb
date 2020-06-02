@@ -8,5 +8,10 @@
     <%= text_field_tag :tag_names, "", class: "form-control" %>
   </div>
 
+  <div class="dropzone uploader" data-url="<%= polymorphic_url([:upload_file, project, :tickets]) %>"></div>
+  <% @attachments.each.with_index do |attachment, i| %>
+    <%= hidden_field_tag "attachment[#{i}][details]", attachment.to_json, class: "saved-attachment" %>
+  <% end %>
+
   <%= form.primary %>
 <% end %>

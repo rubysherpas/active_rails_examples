@@ -8,7 +8,7 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("bootstrap");
-
+require("../src/tickets");
 require("../src/tags");
 
 // Uncomment to copy all static images under ../images to the output folder and reference
