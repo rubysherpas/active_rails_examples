@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :tickets do
       collection do
         get :search
+        post :upload_file
       end
 
       member do
