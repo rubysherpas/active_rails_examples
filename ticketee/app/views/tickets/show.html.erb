@@ -30,14 +30,17 @@
 
   <%= simple_format(@ticket.description) %>
 
-  <% if @ticket.attachment.present? %>
-    <h4>Attachment</h4>
-    <div class="attachment">
-      <p>
-        <%= link_to @ticket.attachment.filename,
-          rails_blob_path(@ticket.attachment, disposition: 'attachment') %>
-        (<%= number_to_human_size(@ticket.attachment.attachment.blob.byte_size) %>)
-      </p>
-    </div>
+  <% if @ticket.attachments.present? %>
+    <h4>Attachment(s)</h4>
+    <% @ticket.attachments.each do |attachment| %>
+    
+      <div class="attachment">
+        <p>
+          <%= link_to attachment.filename,
+            rails_blob_path(attachment, disposition: 'attachment') %>
+          (<%= number_to_human_size(attachment.blob.byte_size) %>)
+        </p>
+      </div>
+    <% end %>
   <% end %>
 </div>
