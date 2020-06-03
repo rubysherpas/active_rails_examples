@@ -57,7 +57,6 @@ RSpec.feature "Users can create new tickets" do
     fill_in "Description", with: "My pages are ugly!"
     fill_in "Tags", with: "browser visual"
 
-
     file = Rails.root.join("spec/fixtures/speed.txt")
     dropzone = find(".dz-hidden-input", visible: false)
     dropzone.attach_file(file)

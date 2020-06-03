@@ -19,7 +19,7 @@ class TicketsController < ApplicationController
       flash[:notice] = "Ticket has been created."
       redirect_to [@project, @ticket]
     else
-      @attachments = params[:attachments].map do |attachment|
+      @attachments = Array.wrap(params[:attachments]).map do |attachment|
         blob = ActiveStorage::Blob.find_signed(attachment)
         { signedId: blob.signed_id, name: blob.filename, size: blob.byte_size, path: rails_blob_path(blob) }
       end
@@ -34,6 +34,7 @@ class TicketsController < ApplicationController
   end
 
   def edit
+    @attachments = []
   end
 
   def update
@@ -42,6 +43,10 @@ class TicketsController < ApplicationController
       flash[:notice] = "Ticket has been updated."
       redirect_to [@project, @ticket]
     else
+      @attachments = Array.wrap(params[:attachments]).map do |attachment|
+        blob = ActiveStorage::Blob.find_signed(attachment)
+        { signedId: blob.signed_id, name: blob.filename, size: blob.byte_size, path: rails_blob_path(blob) }
+      end
       flash.now[:alert] = "Ticket has not been updated."
       render "edit"
     end
