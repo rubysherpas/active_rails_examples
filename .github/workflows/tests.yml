@@ -36,6 +36,8 @@ jobs:
         cd ticketee
         bundle exec rake assets:precompile
     - name: Run tests
+      env:
+        BROWSER: chrome
       run: |
         cd ticketee
         bundle exec rspec
