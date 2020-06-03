@@ -26,6 +26,8 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7.1
+    - uses: nanasess/setup-chromedriver@master
+
     - name: Install dependencies
       run: |
         cd ticketee
