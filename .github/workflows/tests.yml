@@ -20,6 +20,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Install sqlite3
+      run: sudo apt-get install sqlite3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
