@@ -65,3 +65,5 @@ RSpec.configure do |config|
   config.include CapybaraFinders, type: :feature
   config.after(type: :feature) { Warden.test_reset! }
 end
+
+Selenum::WebDriver.logger.level = :debug
