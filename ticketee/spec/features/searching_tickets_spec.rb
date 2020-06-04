@@ -47,7 +47,6 @@ RSpec.feature "Users can search for tickets matching specific criteria" do
       click_link "Iteration 1"
     end
 
-    save_and_open_page
     within(".tickets") do
       expect(page).to have_content "Create projects"
       expect(page).to_not have_content "Create users"
