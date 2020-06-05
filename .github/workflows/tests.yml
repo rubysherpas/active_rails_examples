@@ -12,11 +12,13 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+    
+defaults:
+  run:
+    working-directory: ticketee
 
 jobs:
   test:
-    env:
-      working-directory: ./ticketee
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
