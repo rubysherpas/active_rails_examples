@@ -66,4 +66,4 @@ RSpec.configure do |config|
   config.after(type: :feature) { Warden.test_reset! }
 end
 
-Selenum::WebDriver.logger.level = :debug
+Selenium::WebDriver.logger.level = :debug
