@@ -1,7 +1,7 @@
 <%= bootstrap_form_with(model: [project, ticket], local: true, label_errors: true) do |form| %>
   <%= form.text_field :name %>
   <%= form.text_area :description %>
-  <%= form.file_field :attachment, label: "File" %>
+  <div class="dropzone uploader" data-url="<%= polymorphic_url([:upload_file, project, :tickets]) %>"></div>
 
   <%= form.primary %>
 <% end %>
