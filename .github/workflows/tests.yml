@@ -15,9 +15,9 @@ on:
 
 jobs:
   test:
-
+    env:
+      working-directory: ./ticketee
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Install sqlite3
@@ -30,10 +30,6 @@ jobs:
       with:
         cmd: install
     - name: Install dependencies
-      run: |
-        cd ticketee
-        bundle install
+      run: bundle install
     - name: Run tests
-      run: |
-        cd ticketee
-        bundle exec rspec
+      run: bundle exec rspec
