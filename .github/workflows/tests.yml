@@ -32,8 +32,9 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12'
-    - run: npm install
-    - name: Install dependencies
+    - name: Install javascript dependencies
+      run: yarn --frozen-lockfile
+    - name: Install ruby dependencies
       run: bundle install
     - name: Run tests
       run: bundle exec rspec
