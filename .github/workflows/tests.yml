@@ -27,11 +27,11 @@ jobs:
       with:
         ruby-version: 2.7.1
     - uses: actions/cache@v2
-    with:
-      path: vendor/bundle
-      key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-      restore-keys: |
-        ${{ runner.os }}-gems-
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
     - name: Bundle install
     run: |
       cd ticketee
