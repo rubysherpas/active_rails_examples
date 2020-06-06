@@ -66,6 +66,4 @@ RSpec.configure do |config|
   config.after(type: :feature) { Warden.test_reset! }
 end
 
-Selenium::WebDriver.logger.level = :debug
-
 Capybara.javascript_driver = :selenium_headless
