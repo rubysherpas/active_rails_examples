@@ -40,8 +40,6 @@ jobs:
         cd ticketee
         bundle exec rake assets:precompile
     - name: Run tests
-      uses: GabrielBB/xvfb-action@v1.2
-      with:
-        run: |
-          cd ticketee
-          bundle exec rspec
+      run: |
+        cd ticketee
+        bundle exec rspec
