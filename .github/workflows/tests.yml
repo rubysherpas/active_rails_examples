@@ -40,6 +40,6 @@ jobs:
     - name: Run tests
       uses: GabrielBB/xvfb-action@v1.2
       with:
-        working-directory:./ticketee
+        working-directory: ./ticketee
         run: |
           bundle exec rspec
