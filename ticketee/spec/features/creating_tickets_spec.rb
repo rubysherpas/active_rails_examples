@@ -51,6 +51,8 @@ RSpec.feature "Users can create new tickets" do
     expect(page).to have_content "speed.txt"
     expect(page).to have_content "spin.txt"
 
+    expect(page).to have_button('Create Ticket', disabled: false)
+
     click_button "Create Ticket"
 
     expect(page).to have_content "Ticket has been created."
@@ -61,4 +63,20 @@ RSpec.feature "Users can create new tickets" do
       expect(page).to have_content "gradient.txt"
     end
   end
+
+  scenario "persisting file uploads across form displays", js: true do
+    attach_file("spec/fixtures/gradient.txt", class: 'dz-hidden-input', visible: false)
+    click_button "Create Ticket"
+  
+    fill_in "Name", with: "Add documentation for blink tag"
+    fill_in "Description", with: "The blink tag has a speed attribute"
+    click_button "Create Ticket"
+
+    expect(page).to have_content "Ticket has been created."
+  
+    within(".ticket .attachments") do
+      expect(page).to have_content "gradient.txt"
+    end
+  end
+
 end

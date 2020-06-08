@@ -31,8 +31,28 @@ document.addEventListener("turbolinks:load", () => {
       headers: headers,
     });
 
+    const savedAttachments = document.querySelectorAll(".saved-attachment");
+    for (const attachment of savedAttachments) {
+      const details = JSON.parse(attachment.value);
+      let mockFile = { name: details.name, size: details.size };
+      myDropzone.displayExistingFile(mockFile, details.path);
+      appendAttachment(details.signedId);
+    }
+
     myDropzone.on("success", (file, response) => {
       appendAttachment(response.signedId);
     });
+
+    myDropzone.on("addedfile", function (file, xhr, formData) {
+        var submit = document.querySelectorAll("input[type=submit]")[0];
+        submit.disabled = true;
+    });
+
+    myDropzone.on("queuecomplete", function ( ) {
+        var submit = document.querySelectorAll("input[type=submit]")[0];
+        submit.disabled = false;
+    });
   }
+
+  
 });
