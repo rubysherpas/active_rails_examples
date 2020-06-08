@@ -35,7 +35,17 @@ document.addEventListener("turbolinks:load", () => {
     for (const attachment of savedAttachments) {
       const details = JSON.parse(attachment.value);
       let mockFile = { name: details.name, size: details.size };
-      myDropzone.displayExistingFile(mockFile, details.path);
+      if (details.contentType.startsWith("image")) {
+        myDropzone.displayExistingFile(mockFile, details.path);
+      } else {
+        myDropzone.displayExistingFile(
+          mockFile,
+          details.path,
+          null,
+          null,
+          null
+        );
+      }
       appendAttachment(details.signedId);
     }
 

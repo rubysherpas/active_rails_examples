@@ -19,7 +19,13 @@ class TicketsController < ApplicationController
       if params[:attachments]
         @attachments = params[:attachments].map do |attachment|
           blob = ActiveStorage::Blob.find_signed(attachment)
-          { signedId: blob.signed_id, name: blob.filename, size: blob.byte_size, path: rails_blob_url(blob) }
+          {
+            signedId: blob.signed_id,
+            name: blob.filename,
+            size: blob.byte_size,
+            path: rails_blob_url(blob),
+            contentType: blob.content_type,
+          }
         end
       end
       flash.now[:alert] = "Ticket has not been created."
