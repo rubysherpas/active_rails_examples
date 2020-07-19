@@ -2,6 +2,6 @@
   <%= form.text_field :name %>
   <%= form.text_area :description %>
   <div class="dropzone uploader" data-url="<%= polymorphic_url([:upload_file, project, :tickets]) %>"></div>
-
+  <br />
   <%= form.primary %>
 <% end %>
