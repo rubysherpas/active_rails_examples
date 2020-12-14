@@ -1,0 +1,14 @@
+<h1>New Project</h1>
+<%= form_with(model: @project, local: true) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
