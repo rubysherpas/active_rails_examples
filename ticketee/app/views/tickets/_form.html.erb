@@ -1,0 +1,23 @@
+<%= form_with(model: [project, ticket], local: true) do |form| %>
+  <% if ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ticket.errors.count, "error") %>
+      prohibited this project from being saved:</h2>
+
+      <ul>
+        <% ticket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </p>
+  <%= form.submit %>
+<% end %>
