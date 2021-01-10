@@ -1,25 +1,6 @@
-<%= form_with(model: project, local: true) do |form| %>
-  <% if project.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(project.errors.count, "error") %>
-    prohibited this project from being saved:</h2>
+<%= bootstrap_form_with(model: project, local: true, label_errors: true) do |form| %>
+  <%= form.text_field :name %>
+  <%= form.text_field :description %>
 
-    <ul>
-      <% project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <%= form.submit %>
+  <%= form.primary %>
 <% end %>
