@@ -1,7 +1,8 @@
 require "rails_helper"
 
-RSpec.feature "Users can edit existing projects" do
+RSpec.feature "Admins can edit existing projects" do
   before do
+    login_as(FactoryBot.create(:user, :admin))
     FactoryBot.create(:project, name: "Visual Studio Code")
 
     visit "/"
