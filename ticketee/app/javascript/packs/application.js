@@ -10,6 +10,7 @@ import "channels";
 require("jquery");
 require("popper.js");
 require("bootstrap");
+require("../src/dropzone");
 
 Rails.start();
 Turbolinks.start();

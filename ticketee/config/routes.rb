@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   root "projects#index"
 
   resources :projects, only: [:index, :show] do
-    resources :tickets
+    resources :tickets do
+      collection do
+        post :upload_file
+      end
+    end
   end
 end
