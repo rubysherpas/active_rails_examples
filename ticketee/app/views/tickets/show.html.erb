@@ -24,8 +24,21 @@
     </tr>
   </table>
 
-
   <%= simple_format(@ticket.description) %>
+
+  <div class="comments">
+    <%= render "comments/form", ticket: @ticket, comment: @comment %>
+    <header>
+      <h3>Comments</h3>
+    </header>
+
+    <% comments = @ticket.comments.persisted.ordered %>
+    <% if comments.any? %>
+      <%= render comments %>
+    <% else %>
+      <p>There are no comments for this ticket.</p>
+    <% end %>
+  </div>
 
   <% if @ticket.attachments.present? %>
     <h4>Attachment(s)</h4>
