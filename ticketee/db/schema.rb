@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_210400) do
+ActiveRecord::Schema.define(version: 2021_01_18_014038) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,7 +46,9 @@ ActiveRecord::Schema.define(version: 2021_01_15_210400) do
     t.integer "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "state_id"
     t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["state_id"], name: "index_comments_on_state_id"
     t.index ["ticket_id"], name: "index_comments_on_ticket_id"
   end
 
@@ -57,6 +59,11 @@ ActiveRecord::Schema.define(version: 2021_01_15_210400) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -64,8 +71,10 @@ ActiveRecord::Schema.define(version: 2021_01_15_210400) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "author_id", null: false
+    t.integer "state_id"
     t.index ["author_id"], name: "index_tickets_on_author_id"
     t.index ["project_id"], name: "index_tickets_on_project_id"
+    t.index ["state_id"], name: "index_tickets_on_state_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,8 +93,10 @@ ActiveRecord::Schema.define(version: 2021_01_15_210400) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "states"
   add_foreign_key "comments", "tickets"
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "tickets", "projects"
+  add_foreign_key "tickets", "states"
   add_foreign_key "tickets", "users", column: "author_id"
 end

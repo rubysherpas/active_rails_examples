@@ -13,7 +13,7 @@
     </ul>
   </header>
 
-  <table>
+  <table class="attributes">
     <tr>
       <th>Author:</th>
       <td><%= @ticket.author.email %></td>
@@ -22,6 +22,12 @@
       <th>Created:</th>
       <td><%= time_ago_in_words(@ticket.created_at) %> ago</td>
     </tr>
+    <% if @ticket.state.present? %>
+      <tr>
+        <th>State:</th>
+        <td><%= render @ticket.state %></td>
+      </tr>
+    <% end %>
   </table>
 
   <%= simple_format(@ticket.description) %>
