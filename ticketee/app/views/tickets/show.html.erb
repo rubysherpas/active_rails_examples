@@ -33,17 +33,26 @@
   <%= simple_format(@ticket.description) %>
 
   <div class="comments">
-    <%= render "comments/form", ticket: @ticket, comment: @comment %>
     <header>
       <h3>Comments</h3>
     </header>
 
     <% comments = @ticket.comments.persisted.ordered %>
     <% if comments.any? %>
-      <%= render comments %>
+      <% state = nil %>
+      <% comments.each do |comment| %>
+        <%= render comment %>
+        <% if comment.state != state %>
+          <%= render "state_change", previous_state: state, new_state: comment.state %>
+          <% state = comment.state %>
+        <% end %>
+      <% end %>
+
     <% else %>
       <p>There are no comments for this ticket.</p>
     <% end %>
+
+    <%= render "comments/form", ticket: @ticket, comment: @comment %>
   </div>
 
   <% if @ticket.attachments.present? %>
