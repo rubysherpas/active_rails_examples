@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import "bootstrap";
+
 .state {
   @extend .rounded, .px-2, .py-1;
   display: inline-block;
