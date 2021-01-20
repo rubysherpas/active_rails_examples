@@ -23,6 +23,10 @@ Rails.application.routes.draw do
       collection do
         post :upload_file
       end
+
+      member do
+        patch :watch
+      end
     end
   end
 

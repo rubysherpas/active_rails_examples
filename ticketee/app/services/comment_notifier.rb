@@ -6,7 +6,7 @@ class CommentNotifier
   end
 
   def notify_watchers
-    (comment.ticket.watchers.except(comment.author)).each do |user|
+    (comment.ticket.watchers.excluding(comment.author)).each do |user|
       CommentMailer
         .with(comment: comment, user: user)
         .new_comment

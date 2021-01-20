@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_project
-  before_action :set_ticket, only: %i(show edit update destroy)
+  before_action :set_ticket, only: %i(show edit update destroy watch)
 
   def new
     @ticket = @project.tickets.build
@@ -48,6 +48,18 @@ class TicketsController < ApplicationController
     flash[:notice] = "Ticket has been deleted."
 
     redirect_to @project
+  end
+
+  def watch
+    if @ticket.watchers.exists?(current_user.id)
+      @ticket.watchers.destroy(current_user)
+      flash[:notice] = "You are no longer watching this ticket."
+    else
+      @ticket.watchers << current_user
+      flash[:notice] = "You are now watching this ticket."
+    end
+
+    redirect_to project_ticket_path(@ticket.project, @ticket)
   end
 
   def upload_file

@@ -24,9 +24,10 @@ RSpec.describe CommentMailer, type: :mailer do
     it "sends out an email notification about a new comment" do
       expect(email.to).to include ticket_owner.email
       title = "#{ticket.name} for #{project.name} has been updated."
-      expect(email.body.to_s).to include title
-      expect(email.body.to_s).to include "#{commenter.email} wrote:"
-      expect(email.body.to_s).to include comment.text
+      body = email.default_part_body
+      expect(body).to include title
+      expect(body).to include "#{commenter.email} wrote:"
+      expect(body).to include comment.text
     end
   end
 end

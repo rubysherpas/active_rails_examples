@@ -2,6 +2,9 @@
 <tr>
   <td>
     <h1>New comment</h1>
+
+    <%= @ticket.name %> for <%= @project.name %> has been updated.
+
     <p>
       <%= link_to "#{@project.name} - #{@ticket.name}", ticket_url %>
     </p>

@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 @import "bootstrap";
+@import "font-awesome";
 
 .state {
   @extend .rounded, .px-2, .py-1;
@@ -13,4 +14,31 @@
 
 .tickets li {
   @extend .mb-1;
+}
+
+.watch,
+.unwatch {
+  @extend .btn, .btn-sm, .d-block;
+  font-weight: bold;
+
+  &:before {
+    font-family: "FontAwesome";
+    padding-right: 0.5em;
+  }
+}
+
+.watch {
+  @extend .btn-success;
+
+  &:before {
+    @extend .fa-eye;
+  }
+}
+
+.unwatch {
+  @extend .btn-danger;
+
+  &:before {
+    @extend .fa-eye-slash;
+  }
 }
