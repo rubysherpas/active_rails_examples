@@ -3,17 +3,21 @@ require "rails_helper"
 RSpec.feature "Users can search for tickets matching specific criteria" do
   let(:user) { FactoryBot.create(:user) }
   let(:project) { FactoryBot.create(:project) }
+
   let!(:ticket_1) do
     tags = [FactoryBot.create(:tag, name: "Iteration 1")]
     FactoryBot.create(:ticket, name: "Create projects",
-      project: project, author: user, tags: tags)
+      project: project, author: user, tags: tags, state: open)
   end
 
   let!(:ticket_2) do
     tags = [FactoryBot.create(:tag, name: "Iteration 2")]
     FactoryBot.create(:ticket, name: "Create users",
-      project: project, author: user, tags: tags)
+      project: project, author: user, tags: tags, state: closed)
   end
+
+  let(:open) { State.create(name: "Open") }
+  let(:closed) { State.create(name: "Closed") }
 
   before do
     login_as(user)
@@ -22,6 +26,15 @@ RSpec.feature "Users can search for tickets matching specific criteria" do
 
   scenario "searching by tag" do
     fill_in "Search", with: %q{tag:"Iteration 1"}
+    click_button "Search"
+    within(".tickets") do
+      expect(page).to have_link "Create projects"
+      expect(page).to_not have_link "Create users"
+    end
+  end
+
+  scenario "searching by state" do
+    fill_in "Search", with: "state:Open"
     click_button "Search"
     within(".tickets") do
       expect(page).to have_link "Create projects"
