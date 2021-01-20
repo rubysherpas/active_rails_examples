@@ -12,6 +12,9 @@ class TicketsController < ApplicationController
     if params[:attachments].present?
       @ticket.attachments.attach(params[:attachments])
     end
+    @ticket.tags = params[:tag_names].split(",").map do |tag|
+      Tag.find_or_initialize_by(name: tag)
+    end
 
     if @ticket.save
       flash[:notice] = "Ticket has been created."
