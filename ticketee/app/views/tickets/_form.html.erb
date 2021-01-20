@@ -4,8 +4,9 @@
   <% upload_url = upload_file_project_tickets_path(project) %>
   <div class="dropzone uploader mb-2" data-url="<%= upload_url %>"></div>
 
-  <div class="form-group">
-    <%= label_tag :tag_names, "Tags" %>
+  <div class='form-group tags'>
+    <div><%= label_tag :tag_names, "Tags" %></div>
+    <%= render @ticket.tags %>
     <%= text_field_tag :tag_names, "", class: "form-control" %>
   </div>
 
