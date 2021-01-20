@@ -10,6 +10,10 @@ class Ticket < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_and_belongs_to_many :watchers, -> { distinct },
+    join_table: "ticket_watchers",
+    class_name: "User"
+
   before_create :assign_default_state
 
   private
