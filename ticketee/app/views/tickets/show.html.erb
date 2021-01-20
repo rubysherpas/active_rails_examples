@@ -32,7 +32,7 @@
     <% if @ticket.tags.any? %>
       <tr>
         <th>Tags:</th>
-        <td class="tags"><%= render @ticket.tags %></td>
+        <td class="tags"><%= render @ticket.tags, ticket: @ticket %></td>
       </tr>
     <% end %>
 

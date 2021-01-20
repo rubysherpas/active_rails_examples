@@ -6,7 +6,7 @@
 
   <div class='form-group tags'>
     <div><%= label_tag :tag_names, "Tags" %></div>
-    <%= render @ticket.tags %>
+    <%= render @ticket.tags, ticket: @ticket %>
     <%= text_field_tag :tag_names, "", class: "form-control" %>
   </div>
 
