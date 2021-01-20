@@ -71,7 +71,7 @@ class TicketsController < ApplicationController
 
   def processed_tags
     params[:tag_names].split(",").map do |tag|
-      Tag.find_or_initialize_by(name: tag)
+      Tag.find_or_initialize_by(name: tag.strip)
     end
   end
 
