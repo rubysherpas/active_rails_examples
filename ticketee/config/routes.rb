@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :tickets do
       collection do
         post :upload_file
+        get :search
       end
 
       member do

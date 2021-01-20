@@ -15,6 +15,10 @@ class Ticket < ApplicationRecord
     join_table: "ticket_watchers",
     class_name: "User"
 
+  searcher do
+    label :tag, from: :tags, field: "name"
+  end
+
   before_create :assign_default_state
 
   private
