@@ -74,3 +74,5 @@ gem "devise", "~> 4.7.3"
 gem "premailer-rails", "~> 1.11"
 
 gem "searcher", "~> 6.0"
+
+gem "aws-sdk-s3", require: false
