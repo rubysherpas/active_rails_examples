@@ -1,0 +1,29 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install sqlite3
+      run: sudo apt-get install libsqlite3-dev
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7.2
+    - name: Install RubyGems
+      run: |
+        bundle install --jobs 4 --retry 3
+    - name: Install Node packages
+      run: |
+        yarn install
+    - name: Compile assets
+      run: |
+        bundle exec rake assets:precompile
+    - name: Run tests
+      run: |
+        bundle exec rspec
