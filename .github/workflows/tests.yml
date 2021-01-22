@@ -33,13 +33,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gems-
 
-    - name: What is in vendor/bundle?
-      run: |
-        sudo apt-get install tree
-        tree
-        ls -al
-        ls -al vendor/bundle
-
     - name: Install sqlite3
       run: sudo apt-get install libsqlite3-dev
     - name: Set up Ruby
