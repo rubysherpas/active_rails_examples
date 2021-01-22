@@ -17,6 +17,7 @@ jobs:
       run: echo "::set-output name=dir::$(yarn cache dir)"
 
     - uses: actions/cache@v2
+      name: Load Yarn Cache
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -25,6 +26,7 @@ jobs:
           ${{ runner.os }}-yarn-
 
     - uses: actions/cache@v2
+      name: Load Ruby Cache
       with:
         path: ticketee/vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -32,7 +34,7 @@ jobs:
           ${{ runner.os }}-gems-
 
     - name: What is in vendor/bundle?
-      run: ls vendor/bundle
+      run: ls ticketee/vendor/bundle
 
     - name: Install sqlite3
       run: sudo apt-get install libsqlite3-dev
