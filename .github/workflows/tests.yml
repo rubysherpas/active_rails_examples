@@ -35,6 +35,7 @@ jobs:
 
     - name: What is in vendor/bundle?
       run: |
+        sudo apt-get install tree
         tree
         ls -al
         ls -al vendor/bundle
