@@ -26,10 +26,13 @@ jobs:
 
     - uses: actions/cache@v2
       with:
-        path: vendor/bundle
+        path: ticketee/vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
+
+    - name: What is in vendor/bundle?
+      run: ls vendor/bundle
 
     - name: Install sqlite3
       run: sudo apt-get install libsqlite3-dev
