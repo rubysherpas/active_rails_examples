@@ -34,7 +34,7 @@ jobs:
           ${{ runner.os }}-gems-
 
     - name: What is in vendor/bundle?
-      run: ls ticketee/vendor/bundle
+      run: ls -al
 
     - name: Install sqlite3
       run: sudo apt-get install libsqlite3-dev
