@@ -69,4 +69,4 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
-Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.javascript_driver = :selenium_headless
