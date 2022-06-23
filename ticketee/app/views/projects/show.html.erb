@@ -2,5 +2,11 @@
 <h1><%= @project.name %></h1>
 
 <%= link_to "Edit Project", edit_project_path(@project) %>
+<%= button_to "Delete Project",
+    project_path(@project),
+    method: :delete,
+    remote: true,
+    form: { data: { turbo_confirm: 'Are you sure?' } }
+%>
 
 <p><%= @project.description %></p>
