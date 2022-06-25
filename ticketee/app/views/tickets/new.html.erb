@@ -1,8 +1,10 @@
 <header>
-  <h1>
-    New Ticket
-    <small><%= @project.name %></small>
+  <h1 class="title mb-4">
+    <%= link_to @project.name, @project %>
   </h1>
+  <h2 class="subtitle">
+    New Ticket
+  </h2>
 </header>
 
 <%= render "form", project: @project, ticket: @ticket %>

@@ -1,4 +1,4 @@
-<%= form_with(model: project, local: true) do |form| %>
+<%= form_with(model: project, class: "form") do |form| %>
   <% if project.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(project.errors.count, "error") %>
@@ -13,13 +13,13 @@
   <% end %>
   <div>
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "text-field" %>
   </div>
 
   <div>
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "text-area" %>
   </div>
 
-  <%= form.submit %>
+  <%= form.submit class: "button-primary" %>
 <% end %>

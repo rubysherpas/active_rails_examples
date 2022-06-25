@@ -73,3 +73,7 @@ group :test do
   gem "webdrivers"
   gem "factory_bot_rails", "~> 6.2"
 end
+
+gem "tailwindcss-rails", "~> 2.0"
+
+gem "font-awesome-rails", "~> 4.7"

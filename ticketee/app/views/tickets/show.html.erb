@@ -1,15 +1,23 @@
 <div class="ticket">
-  <header>
-    <h1><%= @project.name %></h1>
+  <header class="mb-4">
+    <h1 class="title"><%= link_to @project.name, @project %></h1>
   </header>
 
-  <header>
-    <h2><%= @ticket.name %></h2>
+  <header class="header mb-4">
+    <h2 class="subtitle"><%= @ticket.name %></h2>
 
     <ul class="actions">
-      <li><%= link_to "Edit Ticket", [:edit, @project, @ticket] %></li>
-      <li><%= link_to "Delete Ticket", [@project, @ticket], method: :delete,
-  data: { confirm: "Are you sure you want to delete this ticket?"} %></li>
+      <%= link_to [:edit, @project, @ticket], class: "button-primary" do %>
+      <%= fa_icon "edit", class: "mr-1" %>
+      Edit Ticket
+    <% end %>
+    <%= link_to [@project, @ticket], method: :delete,
+        data: { confirm: "Are you sure you want to delete this ticket?" },
+        class: "button-danger" do
+    %>
+      <%= fa_icon "trash", class: "mr-1" %>
+      Delete Ticket
+    <% end %>
     </ul>
   </header>
 

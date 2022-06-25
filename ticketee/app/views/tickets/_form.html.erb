@@ -1,4 +1,4 @@
-<%= form_with(model: [project, ticket], local: true) do |form| %>
+<%= form_with(model: [project, ticket], class: "form") do |form| %>
   <% if ticket.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(ticket.errors.count, "error") %>
@@ -19,5 +19,5 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
-  <%= form.submit %>
+  <%= form.submit class: "button-primary" %>
 <% end %>

@@ -1,10 +1,17 @@
-<h1>Projects</h1>
+<header class="header mb-8">
+  <h1 class="title">Projects</h1>
 
-<%= link_to "New Project", new_project_path %>
+  <div class="actions">
+    <%= link_to new_project_path, class: "button-outline" do %>
+      <%= fa_icon "plus", class: "mr-1" %>
+      New Project
+    <% end %>
+  </div>
+</header>
 
 <div class="projects">
   <% @projects.each do |project| %>
-    <h2><%= link_to project.name, project %></h2>
+    <h2 class="subtitle"><%= link_to project.name, project %></h2>
     <p><%= project.description %></p>
   <% end %>
 </div>
