@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  a {
+    @apply text-blue-700
+  }
+
+  .button-primary {
+    @apply text-white bg-blue-700 rounded-lg text-sm px-4 py-2
+  }
+
+  .button-primary:hover {
+    @apply bg-blue-800;
+  }
+
+  .button-primary:focus {
+    @apply ring-2 ring-blue-300;
+  }
+
+  .header {
+    @apply border-b pb-2 mb-4 flex items-center
+  }
+
+  .header h1 {
+    @apply text-4xl
+  }
+
+  .header .actions {
+    @apply ml-auto;
+  }
+}

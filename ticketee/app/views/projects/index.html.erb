@@ -1,10 +1,17 @@
-<h1>Projects</h1>
+<div class="header">
+  <h1>Projects</h1>
 
-<%= link_to "New Project", new_project_path %>
+  <ul class="actions">
+    <li><%= link_to "New Project", new_project_path,
+      class: "button-primary" %></li>
+  </ul>
+</div>
 
-<div class="projects">
+<div class="projects space-y-2">
   <% @projects.each do |project| %>
-    <h2><%= link_to project.name, project %></h2>
-    <p><%= project.description %></p>
+    <div class="rounded border p-4">
+      <h2 class="text-3xl"><%= link_to project.name, project %></h2>
+      <p><%= project.description %></p>
+    </div>
   <% end %>
 </div>
