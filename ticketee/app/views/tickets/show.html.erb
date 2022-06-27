@@ -1,14 +1,15 @@
-<header>
-  <h1><%= @project.name %></h1>
+<header class="header">
+  <h1><%= link_to @project.name, @project %></h1>
 </header>
 
-<header>
+<header class="header">
   <h2><%= @ticket.name %></h2>
 
   <ul class="actions">
-    <li><%= link_to "Edit Ticket", [:edit, @project, @ticket] %></li>
+    <li><%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "button-primary" %></li>
     <li><%= button_to "Delete Ticket", [@project, @ticket], method: :delete,
-form: { data: { turbo_confirm: "Are you sure you want to delete this ticket?" } } %></li>
+            class: "button-danger",
+            form: { data: { turbo_confirm: "Are you sure you want to delete this ticket?" } } %></li>
   </ul>
 </header>
 
