@@ -1,6 +1,6 @@
-<%= form_with(model: project, local: true) do |form| %>
+<%= form_with(model: project, local: true, class: "form") do |form| %>
   <% if project.errors.any? %>
-  <div id="error_explanation">
+  <div class="errors">
     <h2><%= pluralize(project.errors.count, "error") %>
     prohibited this project from being saved:</h2>
 

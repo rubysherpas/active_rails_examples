@@ -16,7 +16,8 @@
   <body>
     <div class="my-4 mx-8 lg:mx-64 md:mx-32">
       <% flash.each do |key, message| %>
-        <div><%= message %></div>
+        <% style_class = key == "notice" ? "flash-notice" : "flash-alert" %>
+        <div class="<%= style_class %> mb-4"><%= message %></div>
       <% end %>
 
       <%= yield %>

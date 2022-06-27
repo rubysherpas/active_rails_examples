@@ -31,4 +31,53 @@
   .header .actions {
     @apply ml-auto;
   }
+
+  .form {
+    @apply space-y-4
+  }
+
+  .input {
+    @apply border border-gray-300 text-gray-900 text-sm rounded block w-full p-2
+  }
+
+  .input:focus {
+    @apply ring-blue-500 border-blue-500;
+  }
+
+  .form input[type=text],
+  .form textarea {
+    @apply input;
+  }
+
+  .form input[type=submit] {
+    @apply button-primary;
+  }
+
+  .alert {
+    @apply p-4 bg-red-100 text-red-500 rounded
+  }
+
+  .flash-alert {
+    @apply alert;
+  }
+
+  .form .errors {
+    @apply alert;
+  }
+
+  .form .errors ul {
+    @apply list-disc list-inside
+  }
+
+  .flash {
+    @apply rounded mb-4 p-4
+  }
+
+  .flash-notice {
+    @apply flash bg-green-100 text-green-500
+  }
+
+  .flash-alert {
+    @apply flash bg-red-100 text-red-500
+  }
 }
