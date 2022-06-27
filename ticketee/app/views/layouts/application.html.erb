@@ -14,7 +14,13 @@
   </head>
 
   <body>
-    <div class="my-4 mx-8 lg:mx-64 md:mx-32">
+    <div class="mx-8 lg:mx-64 md:mx-32">
+      <div class="mb-8 bg-gray-200 p-4 rounded-b flex">
+        <h1 class="text-xl">Ticketee</h1>
+        <div class="actions ml-auto">
+          <%= link_to "Sign up", new_user_registration_path %>
+        </div>
+      </div>
       <% flash.each do |key, message| %>
         <% style_class = key == "notice" ? "flash-notice" : "flash-alert" %>
         <div class="<%= style_class %> mb-4"><%= message %></div>
