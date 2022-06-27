@@ -8,8 +8,12 @@
     @apply text-blue-700
   }
 
+  .button {
+    @apply text-white rounded-lg text-sm px-4 py-2 block text-center;
+  }
+
   .button-primary {
-    @apply text-white bg-blue-700 rounded-lg text-sm px-4 py-2
+    @apply button bg-blue-700
   }
 
   .button-primary:hover {
@@ -20,6 +24,18 @@
     @apply ring-2 ring-blue-300;
   }
 
+  .button-danger {
+    @apply button bg-red-600
+  }
+
+  .button-danger:hover {
+    @apply bg-red-800;
+  }
+
+  .button-danger:focus {
+    @apply ring-2 ring-red-300;
+  }
+
   .header {
     @apply border-b pb-2 mb-4 flex items-center
   }
@@ -28,8 +44,12 @@
     @apply text-4xl
   }
 
+  .header h2 {
+    @apply text-3xl
+  }
+
   .header .actions {
-    @apply ml-auto;
+    @apply ml-auto space-y-2;
   }
 
   .form {
