@@ -15,10 +15,21 @@
 
   <body>
     <div class="mx-8 lg:mx-64 md:mx-32">
-      <div class="mb-8 bg-gray-200 p-4 rounded-b flex">
+      <div class="mb-8 bg-gray-100 border-1 p-4 rounded-b flex">
         <h1 class="text-xl">Ticketee</h1>
-        <div class="actions ml-auto">
-          <%= link_to "Sign up", new_user_registration_path %>
+        <div class="ml-auto">
+          <% unless user_signed_in? %>
+            <%= link_to "Sign up", new_user_registration_path %>
+            &middot;
+            <%= link_to "Sign in", new_user_session_path %>
+          <% end %>
+          <% if user_signed_in? %>
+          Signed in as <%= current_user.email %> &middot;
+          <%= link_to "Sign out",
+              destroy_user_session_path,
+              data: { "turbo-method": :delete }
+          %>
+        <% end %>
         </div>
       </div>
       <% flash.each do |key, message| %>
