@@ -65,10 +65,11 @@
   }
 
   .form input[type=text],
+  .form input[type=email],
+  .form input[type=password],
   .form textarea {
     @apply input;
   }
-
   .form input[type=submit] {
     @apply button-primary;
   }
